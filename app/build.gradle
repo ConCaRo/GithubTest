@@ -1,18 +1,21 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "trong.test.githubtest"
+        applicationId "trong.test.github"
         minSdkVersion 15
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+    dataBinding {
+        enabled true
     }
     buildTypes {
         release {
@@ -23,10 +26,46 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    def applicationDependencies = rootProject.ext.mainApplication
+
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:28.0.0'
+    //  UI
+    implementation applicationDependencies.appCompat
+    implementation applicationDependencies.cardView
+    implementation applicationDependencies.recyclerView
+    implementation applicationDependencies.archComponents
+    implementation applicationDependencies.design
+    implementation applicationDependencies.constraintLayout
+    // Dagger
+    implementation applicationDependencies.dagger
+    implementation applicationDependencies.dagger_android
+    implementation applicationDependencies.dagger_android_support
+    // RX
+    implementation applicationDependencies.javaxAnnotation
+    implementation applicationDependencies.javaxInject
+    // Retrofit
+    implementation applicationDependencies.retrofit
+    implementation applicationDependencies.okhttpLoggingInterceptor
+    // Lifecycle
+    implementation applicationDependencies.archComponents
+    // Coroutine
+    implementation applicationDependencies.kotlinCoroutines
+    implementation applicationDependencies.kotlinCoroutinesAndroid
+    // Glide
+    implementation applicationDependencies.glide
+
+    //Compile time dependencies
+    kapt applicationDependencies.dagger_android_processor
+    kapt applicationDependencies.daggerCompiler
+    compileOnly applicationDependencies.javaxAnnotation
+    compileOnly applicationDependencies.javaxInject
+    kapt applicationDependencies.glideCompiler
+
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+
 }
