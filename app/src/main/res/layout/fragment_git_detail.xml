@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View"/>
+        <variable name="data" type="trong.test.github.core.model.Git"/>
+
+    </data>
+    <android.support.design.widget.CoordinatorLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white">
+
+        <android.support.design.widget.AppBarLayout
+                android:id="@+id/appbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true">
+
+            <android.support.design.widget.CollapsingToolbarLayout
+                    android:id="@+id/collapsing_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:expandedTitleMarginStart="16dp"
+                    android:background="@android:color/white"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:paddingVertical="16dp">
+
+                    <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/imvLike"
+                            android:layout_width="150dp"
+                            android:layout_height="150dp"
+                            android:layout_alignParentRight="true"
+                            android:padding="2dp"
+                            app:avatar="@{data.avatar}"
+                            android:src="@mipmap/ic_launcher_round"/>
+
+                    <TextView
+                            android:id="@+id/tvName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{data.name}"
+                            android:layout_marginTop="6dp"
+                            android:textSize="20sp"/>
+
+                    <TextView
+                            android:id="@+id/tvBio"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{data.bio}"
+                            android:layout_marginTop="2dp"
+                            android:paddingHorizontal="16dp"
+                            android:gravity="center"/>
+
+
+                </LinearLayout>
+
+            </android.support.design.widget.CollapsingToolbarLayout>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.widget.NestedScrollView
+                android:id="@+id/scrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="16dp">
+
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:descendantFocusability="blocksDescendants"
+                        android:paddingVertical="8dp"
+                        android:layout_marginTop="16dp">
+
+                    <android.support.v7.widget.AppCompatImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@android:drawable/ic_dialog_dialer"/>
+
+                    <LinearLayout android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:orientation="vertical"
+                                  android:gravity="center_vertical"
+                                  android:layout_marginLeft="8dp">
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/imvImage"
+                                android:text="@{data.login}"/>
+
+                        <TextView
+                                android:id="@+id/tvStaff"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/imvImage"
+                                android:background="@drawable/bg_staff"
+                                android:text="STAFF"
+                                android:paddingHorizontal="6dp"
+                                android:paddingVertical="2dp"
+                                android:textSize="10sp"
+                                android:textColor="@android:color/white"
+                                android:visibility="@{!data.site_admin ? View.VISIBLE : View.GONE}"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:descendantFocusability="blocksDescendants"
+                        android:paddingVertical="8dp"
+                        android:layout_marginTop="16dp">
+
+                    <android.support.v7.widget.AppCompatImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:padding="2dp"
+                            android:src="@android:drawable/ic_dialog_map"/>
+
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@+id/imvImage"
+                            android:text="@{data.location}"
+                            android:layout_marginLeft="8dp"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:descendantFocusability="blocksDescendants"
+                        android:paddingVertical="8dp"
+                        android:layout_marginTop="16dp">
+
+                    <android.support.v7.widget.AppCompatImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentRight="true"
+                            android:padding="2dp"
+                            android:src="@android:drawable/ic_dialog_alert"/>
+
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@+id/imvImage"
+                            android:text="@{data.blog}"
+                            android:layout_marginLeft="8dp"/>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </android.support.v4.widget.NestedScrollView>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</layout>

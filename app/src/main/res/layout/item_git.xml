@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+        <variable name="data" type="trong.test.github.core.model.Git"/>
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/viewRoot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingHorizontal="12dp"
+        android:background="@android:color/white"
+        android:paddingVertical="12dp">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foreground="?selectableItemBackgroundBorderless"
+            android:orientation="vertical"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="0dp"
+            app:cardUseCompatPadding="false">
+
+            <LinearLayout
+                android:id="@+id/rootView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:descendantFocusability="blocksDescendants">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/imvLike"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentRight="true"
+                    android:padding="2dp"
+                    app:avatar="@{data.avatar}"
+                    android:src="@mipmap/ic_launcher_round"/>
+
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="8dp">
+
+                    <TextView
+                        android:id="@+id/tvName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/imvImage"
+                        android:text="@{data.login}"/>
+
+                    <TextView
+                            android:id="@+id/tvStaff"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@+id/imvImage"
+                            android:background="@drawable/bg_staff"
+                            android:text="STAFF"
+                            android:paddingHorizontal="6dp"
+                            android:paddingVertical="2dp"
+                            android:textSize="10sp"
+                            android:textColor="@android:color/white"
+                            android:visibility="@{!data.site_admin ? View.VISIBLE : View.GONE}"/>
+
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+</layout>
