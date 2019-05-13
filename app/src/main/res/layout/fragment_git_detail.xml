@@ -95,7 +95,7 @@
                     <android.support.v7.widget.AppCompatImageView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@android:drawable/ic_dialog_dialer"/>
+                            android:src="@drawable/ic_person"/>
 
                     <LinearLayout android:layout_width="match_parent"
                                   android:layout_height="wrap_content"
@@ -138,7 +138,7 @@
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:padding="2dp"
-                            android:src="@android:drawable/ic_dialog_map"/>
+                            android:src="@drawable/ic_location"/>
 
 
                     <TextView
@@ -165,14 +165,16 @@
                             android:layout_height="30dp"
                             android:layout_alignParentRight="true"
                             android:padding="2dp"
-                            android:src="@android:drawable/ic_dialog_alert"/>
+                            android:src="@drawable/ic_attachment"/>
 
 
                     <TextView
+                            android:id="@+id/tvLinkBlog"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignBottom="@+id/imvImage"
                             android:text="@{data.blog}"
+                            android:textColor="#1DA4E7"
                             android:layout_marginLeft="8dp"/>
 
 
