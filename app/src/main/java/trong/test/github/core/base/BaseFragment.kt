@@ -80,14 +80,14 @@ abstract class BaseFragment : Fragment(), Injectable {
 
     private fun renderFailure(message: String) {
         val snackBar = Snackbar.make((activity as BaseActivity).fragmentContainer, message, Snackbar.LENGTH_INDEFINITE)
-        snackBar.setAction(message) { }
+        snackBar.setAction("Done") { }
         snackBar.setActionTextColor(
             ContextCompat.getColor(activity?.applicationContext!!,
                 R.color.colorTextPrimary))
         snackBar.show()
     }
 
-    // TODO: Need to improve here, to much errors
+    // TODO: Need to improve here, to much error types
     protected fun handleFailure(failure: Failure?) {
         when (failure) {
             is Failure.NetworkError -> renderFailure("NetworkError")
