@@ -4,7 +4,7 @@ Create an Android App which shows the GitHub users in a List and Detail View
 
 ## Introduction
 
-App mainly used MVVM with Android architecture components from [JetPack](https://developer.android.com/jetpack)
+App applies MVVM with Clean architecture and mainly uses Android architecture components from [JetPack](https://developer.android.com/jetpack)
 
 ### Functionality
 
@@ -20,7 +20,7 @@ This fragment displays user detail:  avatar_url, name, bio, login, site_admin (b
 
 ## Known Issues
 
-Error Handling: Too much boiler plate codes for checking which use case cause the error. Need error code and error message in Failure returned
+Error Handling: Too much redudant codes for checking which use case cause the error. Need error code and error message in Failure returned
 
 Missing Model layer in MVVM to interact with Domain layer (now using directly ViewModel to get data)
 
