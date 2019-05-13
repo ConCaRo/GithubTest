@@ -24,7 +24,7 @@ class GitsViewModel
         this.gits.value = newList
 
         // Check load more and increase current page
-        canLoadMore = gits.size == PER_PAGE
+        canLoadMore = gits.size == PER_PAGE && this.gits.value?.size?.compareTo(100) == -1
         isLoading = false
         currentPage++
     }

@@ -54,6 +54,7 @@ class GitsFragment : BaseFragment() {
     }
 
     override fun initData() {
+        toolbar("Git Users")
         viewModel.getGits()
     }
 

@@ -3,12 +3,10 @@ package trong.test.github.core.base
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
-import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.android.synthetic.main.toolbar.*
 import trong.test.github.R
-import trong.test.github.core.di.viewmodel.Injectable
 import trong.test.github.core.extension.inTransaction
 import javax.inject.Inject
 
@@ -17,7 +15,7 @@ import javax.inject.Inject
  *
  * @see AppCompatActivity
  */
-abstract class BaseActivity : AppCompatActivity(), Injectable, HasSupportFragmentInjector {
+abstract class BaseActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
     @Inject
     lateinit var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>

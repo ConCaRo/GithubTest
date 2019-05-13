@@ -39,6 +39,7 @@ class GitDetailFragment : BaseFragment() {
     }
 
     fun renderData(git: Git?) {
+        toolbar(git?.name, true)
         binding.data = git
     }
 
