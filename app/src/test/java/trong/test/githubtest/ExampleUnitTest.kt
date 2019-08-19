@@ -1,5 +1,6 @@
 package trong.test.githubtest
 
+import android.content.Intent
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -13,5 +14,11 @@ class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
+
+        val map = HashMap<String, String>()
+        val intent = Intent()
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+        println("${intent.flags}")
     }
 }

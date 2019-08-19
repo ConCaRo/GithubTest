@@ -11,11 +11,15 @@ import trong.test.github.databinding.ItemGitBinding
 /**
  * Created by Concaro on 05/11/2017.
  */
-class GitAdapter(var items: List<Git> = arrayListOf(), var clickListener: (Git) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class GitAdapter(var items: List<Git> = arrayListOf(), var clickListener: (Git) -> Unit) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        val v = LayoutInflater.from(parent?.context).inflate(R.layout.item_git, parent, false)
-        return ItemViewHolder(v)
+        /*val v = LayoutInflater.from(parent?.context).inflate(R.layout.item_git, parent, false)
+        var itemBinding = ItemGitBinding.bind(v)*/
+        val v = LayoutInflater.from(parent?.context)
+        var itemBinding = ItemGitBinding.inflate(v)
+        return ItemViewHolder(itemBinding)
     }
 
     fun updateItems(items: List<Git>?) {
@@ -28,18 +32,25 @@ class GitAdapter(var items: List<Git> = arrayListOf(), var clickListener: (Git) 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val holder = holder as ItemViewHolder
         val item = items.get(position)
-        holder?.itemBinding.data = item
+        /*holder?.itemBinding.data = item
+        itemBinding.rootView.setOnClickListener {
+            clickListener.invoke(item)
+        }
+        holder?.itemBinding?.executePendingBindings()*/
         holder?.itemBinding.rootView.setOnClickListener {
             clickListener.invoke(item)
         }
-        holder?.itemBinding?.executePendingBindings()
+        holder?.bind(item)
     }
 
     override fun getItemCount(): Int {
         return items.size
     }
 
-    class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var itemBinding = ItemGitBinding.bind(itemView)
+    class ItemViewHolder(val itemBinding: ItemGitBinding) : RecyclerView.ViewHolder(itemBinding.root) {
+        fun bind(item: Git) {
+            itemBinding.data = item
+            // itemBinding.executePendingBindings()
+        }
     }
 }

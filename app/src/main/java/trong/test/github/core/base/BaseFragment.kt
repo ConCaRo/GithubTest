@@ -19,6 +19,7 @@ import trong.test.github.core.di.viewmodel.Injectable
 import trong.test.github.core.domain.GitFailure
 import trong.test.github.core.exception.Failure
 import trong.test.github.features.navigator.Navigator
+import trong.test.github.features.utils.AmplitudeEvent
 import javax.inject.Inject
 
 /**
