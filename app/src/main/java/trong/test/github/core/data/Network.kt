@@ -5,7 +5,9 @@ import trong.test.github.core.base.NetworkHandler
 import trong.test.github.core.domain.GitRepository
 import trong.test.github.core.exception.Failure
 import trong.test.github.core.functional.Either
+import trong.test.github.core.model.Children
 import trong.test.github.core.model.Git
+import trong.test.github.core.model.Parent
 import java.util.*
 import javax.inject.Inject
 
@@ -13,8 +15,10 @@ import javax.inject.Inject
  * Responsible for network call from service (implement repository)
  * @see GitRepository
  */
-class Network @Inject constructor(val networkHandler: NetworkHandler,
-                                   val gitService: GitService) : GitRepository {
+class Network @Inject constructor(
+    val networkHandler: NetworkHandler,
+    val gitService: GitService
+) : GitRepository {
 
     override fun gits(page: Int, per_page: Int, since: Int): Either<Failure, List<Git>> {
         return when (networkHandler.isConnected) {
@@ -30,6 +34,13 @@ class Network @Inject constructor(val networkHandler: NetworkHandler,
         }
     }
 
+    override fun nestedData(): Either<Failure, List<Parent>> {
+        return when (networkHandler.isConnected) {
+            true -> Either.Right(getDummyNestedData())
+            false, null -> Either.Left(Failure.NetworkError)
+        }
+    }
+
     // process request, transform data from data layer to domain layer (no need now)
     private fun <T, R> request(call: Call<T>, transform: (T) -> R, default: T): Either<Failure, R> {
         return try {
@@ -41,6 +52,14 @@ class Network @Inject constructor(val networkHandler: NetworkHandler,
         } catch (e: Throwable) {
             Either.Left(Failure.ServerError)
         }
+    }
+
+    fun getDummyNestedData(): List<Parent> {
+        return arrayListOf(Parent(), Parent(), Parent(), Parent(), Parent(), Parent(), Parent(), Parent())
+    }
+
+    fun getDummyNestedChild(): List<Children> {
+        return arrayListOf(Children(), Children(), Children(), Children())
     }
 
 }

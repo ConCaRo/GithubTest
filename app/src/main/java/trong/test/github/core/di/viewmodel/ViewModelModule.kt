@@ -7,6 +7,7 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 import trong.test.github.features.gitdetail.GitDetailViewModel
 import trong.test.github.features.gits.GitsViewModel
+import trong.test.github.features.nestedrecyclerview.NestedRecyclerViewViewModel
 
 @Module
 abstract class ViewModelModule {
@@ -24,4 +25,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(GitDetailViewModel::class)
     internal abstract fun bindGitDetailViewModel(viewModel: GitDetailViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(NestedRecyclerViewViewModel::class)
+    internal abstract fun bindNestedRecyclerViewViewModel(viewModel: NestedRecyclerViewViewModel): ViewModel
 }

@@ -61,7 +61,6 @@
                             android:paddingHorizontal="16dp"
                             android:gravity="center"/>
 
-
                 </LinearLayout>
 
             </android.support.design.widget.CollapsingToolbarLayout>
