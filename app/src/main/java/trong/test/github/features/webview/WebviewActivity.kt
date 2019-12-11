@@ -53,6 +53,10 @@ class WebviewActivity : AppCompatActivity() {
 
 
 
+
+
+
+
     }
 
     private inner class SSLTolerentWebViewClient : WebViewClient() {
