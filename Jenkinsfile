@@ -15,5 +15,15 @@ pipeline {
                 sh "./gradlew testDebugUnitTest"
             }
         }
+        stage('Deploy') {
+            when {
+              expression {
+                currentBuild.result == null || currentBuild.result == 'SUCCESS'
+              }
+            }
+            steps {
+                sh 'echo ${currentBuild.result}'
+            }
+        }
     }
 }
