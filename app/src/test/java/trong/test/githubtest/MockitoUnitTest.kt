@@ -37,7 +37,7 @@ open class MockitoUnitTest {
     fun `when use mock annotation then mock is inject`() {
 
         mockList.add("two")
-        Mockito.verify(mockList).add("one")
+        Mockito.verify(mockList).add("two")
         assertEquals(0, mockList.size)
 
         Mockito.`when`(mockList.size).thenReturn(100)
