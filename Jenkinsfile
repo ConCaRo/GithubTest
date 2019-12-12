@@ -22,7 +22,7 @@ pipeline {
               }
             }
             steps {
-                sh 'echo ${currentBuild.result}'
+                sh "echo ${currentBuild.result}"
             }
         }
     }
