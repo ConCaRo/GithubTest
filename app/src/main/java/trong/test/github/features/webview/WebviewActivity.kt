@@ -48,15 +48,6 @@ class WebviewActivity : AppCompatActivity() {
         webView.loadUrl("https://myfave.com/")
 
 
-
-
-
-
-
-
-
-
-
     }
 
     private inner class SSLTolerentWebViewClient : WebViewClient() {
