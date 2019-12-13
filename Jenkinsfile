@@ -26,13 +26,13 @@ pipeline {
             }
             post {
                 always {
-                    echo "Final Deploy"
+                    sh "echo Final Deploy"
                 }
             }
         }
         post {
             always {
-                echo "Final stages"
+                sh "echo Final stages"
             }
         }
     }
