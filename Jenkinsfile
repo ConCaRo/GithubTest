@@ -35,10 +35,5 @@ pipeline {
                 }
             }
         }
-        post {
-            always {
-                sh "echo Final stages"
-            }
-        }
     }
 }
