@@ -26,8 +26,13 @@ pipeline {
             }
             post {
                 always {
-                    echo "Error"
+                    echo "Final Deploy"
                 }
+            }
+        }
+        post {
+            always {
+                echo "Final stages"
             }
         }
     }
