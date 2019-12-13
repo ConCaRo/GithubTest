@@ -14,6 +14,11 @@ pipeline {
                 sh "echo Testing..."
                 sh "./gradlew testDebugUnitTest"
             }
+            post {
+                always {
+                    sh "echo Finish Test"
+                }
+            }
         }
         stage('Deploy') {
             when {
@@ -26,16 +31,13 @@ pipeline {
             }
             post {
                 always {
-                    sh "echo Final Deploy"
+                    sh "echo Finish Deploy"
                 }
             }
         }
         post {
             always {
                 sh "echo Final stages"
-            }
-            failure {
-                sh "echo The Pipeline failed :("
             }
         }
     }
