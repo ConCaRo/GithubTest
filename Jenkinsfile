@@ -35,7 +35,7 @@ pipeline {
                 echo "Final stages"
             }
             failure {
-                mail to: vitali.nguyen@shopback.com, subject: 'The Pipeline failed :('
+                sh 'echo The Pipeline failed :('
             }
         }
     }
