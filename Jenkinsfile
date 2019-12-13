@@ -32,10 +32,10 @@ pipeline {
         }
         post {
             always {
-                echo "Final stages"
+                sh "echo Final stages"
             }
             failure {
-                sh 'echo The Pipeline failed :('
+                sh "echo The Pipeline failed :(""
             }
         }
     }
