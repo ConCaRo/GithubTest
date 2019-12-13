@@ -22,7 +22,7 @@ pipeline {
               }
             }
             steps {
-                sh "echo ${currentBuild.result}"
+                sh "echo Running ${env.BUILD_ID} on ${env.JENKINS_URL}
             }
         }
     }
