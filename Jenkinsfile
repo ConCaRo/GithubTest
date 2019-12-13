@@ -32,7 +32,7 @@ pipeline {
         }
         post {
             always {
-                sh "echo Final stages"
+                echo "Final stages"
             }
             failure {
                 mail to: vitali.nguyen@shopback.com, subject: 'The Pipeline failed :('
