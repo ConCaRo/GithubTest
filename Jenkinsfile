@@ -32,7 +32,7 @@ pipeline {
             post {
                 always {
                     sh "echo Finish Deploy"
-                    slackSend message: "Build Started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)", color: '#BADA55'
+                    slackSend message: "Build Started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)", color: '#BADA55', channel: "jenkinstest1"
                 }
             }
         }
