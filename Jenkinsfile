@@ -7,6 +7,7 @@ pipeline {
                 sh "chmod +x gradlew"
                 sh "./gradlew clean"
                 sh "./gradlew assembleDebug"
+                archiveArtifacts 'app/build/outputs/dev/debug/*.apk'
             }
         }
         stage("Test") {
