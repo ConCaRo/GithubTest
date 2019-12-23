@@ -30,12 +30,12 @@ pipeline {
             steps {
                 sh "echo Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
             }
-            post {
-                always {
-                    sh "echo Finish Deploy"
-                    slackSend message: "Build Started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)", color: '#BADA55', channel: "jenkinstest1"
-                }
-            }
+        }
+    }
+    post {
+        always {
+            sh "echo Finish "
+            slackSend message: "Build ${currentBuild.currentResult} - Job ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)", color: '#BADA55', channel: "jenkinstest1"
         }
     }
 }
