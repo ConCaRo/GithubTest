@@ -7,6 +7,7 @@ pipeline {
                 // sh "chmod +x gradlew"
                 // sh "./gradlew clean"
                 // sh "./gradlew assembleDebug"
+                sh 'printenv'
                 archiveArtifacts 'app/build/outputs/apk/debug/*.apk'
             }
         }
