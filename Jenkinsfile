@@ -5,10 +5,19 @@ pipeline {
             steps {
                 sh "echo Building..."
                 // sh "chmod +x gradlew"
-                sh "./gradlew clean"
-                sh "./gradlew assembleDebug"
                 // sh 'printenv'
-                dropbox configName: 'Dropbox location', remoteDirectory: '', removePrefix: 'app/build/outputs/apk/debug', sourceFiles: 'app/build/outputs/apk/debug/*.apk'
+                // sh "./gradlew clean"
+                // sh "./gradlew assembleDebug"
+                def path = app/build/outputs/apk/debug/*.apk
+                def file = ${path##*/}
+                def extension = "${file##*.}"
+                def filename = "${file%.*}"
+                sh "echo ${file}"
+                sh "echo ${extension}"
+                sh "echo ${filename}"
+                // sh "mv ${path} ${filename}-${gitbranch}.${extension}"
+                // dropbox configName: 'Dropbox location', remoteDirectory: '', removePrefix: 'app/build/outputs/apk/debug', sourceFiles: 'app/build/outputs/apk/debug/*.apk'
+
             }
         }
         stage("Test") {
