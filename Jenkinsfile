@@ -1,7 +1,6 @@
 pipeline {
     agent any
     environment {
-        files = ''
     }
     stages {
         stage("Build") {
@@ -12,8 +11,8 @@ pipeline {
                 // sh "./gradlew clean"
                 // sh "./gradlew assembleDebug"
                 // files = findFiles(glob: 'app/build/outputs/apk/debug/*.apk')
-                files = "dfsfdsfsf"
-                echo "${files}"
+                def file = "fdsfsd"
+
                 // echo """${files[0].name} ${files[0].path} ${files[0].directory} ${files[0].length} ${files[0].lastModified}"""
                 // sh "mv ${path} ${filename}-${gitbranch}.${extension}"
                 // dropbox configName: 'Dropbox location', remoteDirectory: '', removePrefix: 'app/build/outputs/apk/debug', sourceFiles: 'app/build/outputs/apk/debug/*.apk'
