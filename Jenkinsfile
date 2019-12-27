@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        file = "fdsfdsfd"
+        file = ''
     }
     stages {
         stage("Build") {
@@ -12,6 +12,10 @@ pipeline {
                 // sh "./gradlew clean"
                 // sh "./gradlew assembleDebug"
                 // files = findFiles(glob: 'app/build/outputs/apk/debug/*.apk')
+                script {
+                    def b = "fd"
+                    echo "${b}"
+                }
                 echo "${file}"
 
                 // echo """${files[0].name} ${files[0].path} ${files[0].directory} ${files[0].length} ${files[0].lastModified}"""
