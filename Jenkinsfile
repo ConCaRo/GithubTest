@@ -5,7 +5,7 @@ pipeline {
             steps {
                 sh "echo Building..."
                 // sh "chmod +x gradlew"
-                // sh "./gradlew clean"
+                sh "./gradlew clean"
                 sh "./gradlew assembleDebug"
                 // sh 'printenv'
                 dropbox configName: 'Dropbox location', remoteDirectory: '', removePrefix: 'app/build/outputs/apk/debug', sourceFiles: 'app/build/outputs/apk/debug/*.apk'
