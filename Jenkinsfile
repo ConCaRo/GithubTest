@@ -6,9 +6,9 @@ pipeline {
                 sh "echo Building..."
                 // sh "chmod +x gradlew"
                 // sh "./gradlew clean"
-                // sh "./gradlew assembleDebug"
-                sh 'printenv'
-                archiveArtifacts 'app/build/outputs/apk/debug/*.apk'
+                sh "./gradlew assembleDebug"
+                // sh 'printenv'
+                dropbox configName: 'Dropbox location', remoteDirectory: '', removePrefix: 'app/build/outputs/apk/debug', sourceFiles: 'app/build/outputs/apk/debug/*.apk'
             }
         }
         stage("Test") {
@@ -36,7 +36,7 @@ pipeline {
     post {
         always {
             sh "echo Finish "
-            slackSend message: "Branch `${gitbranch}` Build ${currentBuild.currentResult} - Job ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)", color: '#BADA55', channel: "jenkinstest1"
+            slackSend message: "Branch `${gitbranch}` Build ${currentBuild.currentResult} - Job ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)", color: '#BADA55', channel: "jenkinstest"
         }
     }
 }
