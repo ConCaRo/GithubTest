@@ -10,8 +10,8 @@ pipeline {
                 // sh "./gradlew assembleDebug"
                 def path = app/build/outputs/apk/debug/*.apk
                 def file = ${path##*/}
-                def extension = "${file##*.}"
-                def filename = "${file%.*}"
+                def extension = ${file##*.}
+                def filename = ${file%.*}
                 sh "echo ${file}"
                 sh "echo ${extension}"
                 sh "echo ${filename}"
