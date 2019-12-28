@@ -11,15 +11,13 @@ pipeline {
                 // sh 'printenv'
                 // sh "./gradlew clean"
                 // sh "./gradlew assembleDebug"
-                // files = findFiles(glob: 'app/build/outputs/apk/debug/*.apk')
                 script {
-                    def b = "fd"
-                    echo "${b}"
+                    def files = findFiles(glob: 'app/build/outputs/apk/debug/*.apk')
+                    echo """${files[0].name} ${files[0].path} ${files[0].directory} ${files[0].length} ${files[0].lastModified}"""
+                    // sh "mv ${path} ${filename}-${gitbranch}.${extension}"
                 }
-                echo "${file}"
+                // echo "${file}"
 
-                // echo """${files[0].name} ${files[0].path} ${files[0].directory} ${files[0].length} ${files[0].lastModified}"""
-                // sh "mv ${path} ${filename}-${gitbranch}.${extension}"
                 // dropbox configName: 'Dropbox location', remoteDirectory: '', removePrefix: 'app/build/outputs/apk/debug', sourceFiles: 'app/build/outputs/apk/debug/*.apk'
 
             }
