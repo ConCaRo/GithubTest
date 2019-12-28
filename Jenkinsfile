@@ -17,7 +17,7 @@ pipeline {
                         def name = apkFileName.substring(0, apkFileName.lastIndexOf("."))
                         def extension = apkFileName.substring(apkFileName.lastIndexOf(".") + 1)
                         // echo """${files[0].name} ${files[0].path} ${files[0].directory} ${files[0].length} ${files[0].lastModified}"""
-                        FILENAME = {name}-${jiraticket}.${extension}
+                        env.FILENAME = {name}-${jiraticket}.${extension}
                         sh "mv ${files[0].path} app/build/outputs/apk/debug/${name}-${jiraticket}.${extension}"
                     } else {
                         error('Apk File Invalid')
@@ -52,7 +52,8 @@ pipeline {
     post {
         always {
             sh "echo Finish "
-            slackSend message: "Branch `${gitbranch}` Build ${currentBuild.currentResult} - Job ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)\n  Build <https://www.dropbox.com/home/wildfire/apk?preview=${FILENAME}|Open>", color: '#BADA55', channel: "jenkinstest"
+            env.DROPBOXLINK = "https://www.dropbox.com/home/wildfire/apk?preview=${env.FILENAME}"
+            slackSend message: "Branch `${gitbranch}` Build ${currentBuild.currentResult} - Job ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)\n  Build <${env.DROPBOXLINK}|Open>", color: '#BADA55', channel: "jenkinstest"
         }
     }
 }
