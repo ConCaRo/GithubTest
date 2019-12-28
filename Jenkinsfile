@@ -15,14 +15,8 @@ pipeline {
                 script {
                     def pathApk = 'app/build/outputs/apk/debug/*.apk'
                     def files = findFiles(glob: pathApk)
-                    if(files.size > 0) {
-                        def apkFileName = files[0].name
-                        def name = apkFileName.substring(0, apkFileName.lastIndexOf("."))
-                        def extension = apkFileName.substring(apkFileName.lastIndexOf(".") + 1)
-                        echo """${files[0].name} ${files[0].path} ${files[0].directory} ${files[0].length} ${files[0].lastModified}"""
-                        echo """${name} ${extension}"""
-                        // sh "mv ${pathApk} ${name}-${gitbranch}.${extension}"
-                    }
+                    echo "${files.toString}"
+
                 }
                 // echo "${file}"
 
