@@ -18,7 +18,7 @@ pipeline {
                     def name = input.substring(0, apkFileName.lastIndexOf("."))
                     def extension = input.substring(apkFileName.lastIndexOf(".") + 2)
                     echo """${files[0].name} ${files[0].path} ${files[0].directory} ${files[0].length} ${files[0].lastModified}"""
-                    echo """${name} ${extenstion}"""
+                    echo """${name} ${extension}"""
                     sh "mv ${path} ${name}-${gitbranch}.${extension}"
                 }
                 // echo "${file}"
