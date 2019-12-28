@@ -7,12 +7,11 @@ pipeline {
         stage("Build") {
             steps {
                 sh "echo Building..."
-                // sh "chmod +x gradlew"
-                // sh 'printenv'
-                // sh "./gradlew clean"
-                // sh "./gradlew assembleDebug"
-                // Process file name
+                sh "./gradlew clean"
+                sh "./gradlew assembleDebug"
+
                 script {
+                    // Change apk file name
                     def pathApk = 'app/build/outputs/apk/debug/*.apk'
                     def files = findFiles(glob: pathApk)
                     if(files.size() == 1) {
@@ -26,9 +25,8 @@ pipeline {
                         error('Apk File Invalid')
                     }
                 }
-                // dropbox configName: 'Dropbox location', remoteDirectory: '', removePrefix: 'app/build/outputs/apk/debug', sourceFiles: 'app/build/outputs/apk/debug/*.apk'
-                // sh "rm app/build/outputs/apk/debug/*.apk"
-
+                dropbox configName: 'Dropbox location', remoteDirectory: '', removePrefix: 'app/build/outputs/apk/debug', sourceFiles: 'app/build/outputs/apk/debug/*.apk'
+                sh "rm app/build/outputs/apk/debug/*.apk"
             }
         }
         stage("Test") {
