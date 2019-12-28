@@ -15,8 +15,7 @@ pipeline {
                 script {
                     def pathApk = 'app/build/outputs/apk/debug/*.apk'
                     def files = findFiles(glob: pathApk)
-                    echo "${files.toString}"
-
+                    echo "${files.size()}"
                 }
                 // echo "${file}"
 
