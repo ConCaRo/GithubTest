@@ -21,7 +21,7 @@ pipeline {
                         def extension = apkFileName.substring(apkFileName.lastIndexOf(".") + 1)
                         echo """${files[0].name} ${files[0].path} ${files[0].directory} ${files[0].length} ${files[0].lastModified}"""
                         echo """${name} ${extension}"""
-                        sh "mv files[0].path app/build/outputs/apk/debug/${name}-${gitbranch}.${extension}"
+                        sh "mv ${files[0].path} app/build/outputs/apk/debug/${name}-${gitbranch}.${extension}"
                     } else {
                         error('Apk File Invalid')
                     }
