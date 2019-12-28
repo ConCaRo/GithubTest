@@ -19,7 +19,7 @@ pipeline {
                         // echo """${files[0].name} ${files[0].path} ${files[0].directory} ${files[0].length} ${files[0].lastModified}"""
                         env.FILENAME = "${name}-${jiraticket}.${extension}"
                         env.DROPBOX_LINK = "https://www.dropbox.com/home/wildfire/apk?preview=${env.FILENAME}"
-                        // echo "${env.FILENAME} ${env.DROPBOXLINK}"
+                        // echo "${env.FILENAME} ${env.DROPBOX_LINK}"
                         sh "mv ${files[0].path} app/build/outputs/apk/debug/${env.FILENAME}"
                     } else {
                         error('Apk File Invalid')
@@ -55,7 +55,7 @@ pipeline {
         always {
             sh "echo Finish "
             slackSend message: "Branch `${gitbranch}` Build ${currentBuild.currentResult} - Job ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)\n  Build <${env.DROPBOX_LINK}|Open>", color: '#BADA55', channel: "jenkinstest"
-            jiraAddComment comment: 'Hello test ne`', idOrKey: 'JEN-1', site: 'meomeo'
+            jiraAddComment comment: 'Hello test ne`', idOrKey: "${jiraticket}", site: 'meomeo'
         }
     }
 }
