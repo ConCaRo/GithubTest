@@ -17,10 +17,10 @@ pipeline {
                         def name = apkFileName.substring(0, apkFileName.lastIndexOf("."))
                         def extension = apkFileName.substring(apkFileName.lastIndexOf(".") + 1)
                         // echo """${files[0].name} ${files[0].path} ${files[0].directory} ${files[0].length} ${files[0].lastModified}"""
-                        env.FILENAME = "{name}-${jiraticket}.${extension}"
-                        env.DROPBOXLINK = "https://www.dropbox.com/home/wildfire/apk?preview=${env.FILENAME}"
-                        echo "${env.FILENAME} ${env.DROPBOXLINK}"
-                        sh "mv ${files[0].path} app/build/outputs/apk/debug/${name}-${jiraticket}.${extension}"
+                        env.FILENAME = "${name}-${jiraticket}.${extension}"
+                        env.DROPBOX_LINK = "https://www.dropbox.com/home/wildfire/apk?preview=${env.FILENAME}"
+                        // echo "${env.FILENAME} ${env.DROPBOXLINK}"
+                        sh "mv ${files[0].path} app/build/outputs/apk/debug/${env.FILENAME}"
                     } else {
                         error('Apk File Invalid')
                     }
