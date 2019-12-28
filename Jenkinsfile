@@ -56,6 +56,7 @@ pipeline {
             sh "echo Finish "
             slackSend message: "Branch `${gitbranch}` Build ${currentBuild.currentResult} - Job ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)\n  Build <${env.DROPBOX_LINK}|Open>", color: '#BADA55', channel: "jenkinstest"
             jiraAddComment comment: 'Hello test ne`', idOrKey: "${jiraticket}", site: 'meomeo'
+            jiraComment body: 'olaalo', issueKey: "${jiraticket}"
         }
     }
 }
