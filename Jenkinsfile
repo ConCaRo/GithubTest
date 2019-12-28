@@ -15,7 +15,7 @@ pipeline {
                 script {
                     def pathApk = 'app/build/outputs/apk/debug/*.apk'
                     def files = findFiles(glob: pathApk)
-                    if(files.size() > 0 && file[0]) {
+                    if(files.size > 0) {
                         def apkFileName = files[0].name
                         def name = apkFileName.substring(0, apkFileName.lastIndexOf("."))
                         def extension = apkFileName.substring(apkFileName.lastIndexOf(".") + 1)
