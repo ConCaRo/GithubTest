@@ -15,20 +15,19 @@ pipeline {
                 script {
                     def pathApk = 'app/build/outputs/apk/debug/*.apk'
                     def files = findFiles(glob: pathApk)
-                    if(files.size() == 2) {
+                    if(files.size() == 1) {
                         def apkFileName = files[0].name
                         def name = apkFileName.substring(0, apkFileName.lastIndexOf("."))
                         def extension = apkFileName.substring(apkFileName.lastIndexOf(".") + 1)
                         echo """${files[0].name} ${files[0].path} ${files[0].directory} ${files[0].length} ${files[0].lastModified}"""
                         echo """${name} ${extension}"""
-                        // sh "mv ${pathApk} ${name}-${gitbranch}.${extension}"
+                        sh "mv app/build/outputs/apk/debug/{${apkFileName},${name}-${gitbranch}.${extension}}"
                     } else {
-                        error('apk file invalid')
+                        error('Apk File Invalid')
                     }
                 }
-                // echo "${file}"
-
                 // dropbox configName: 'Dropbox location', remoteDirectory: '', removePrefix: 'app/build/outputs/apk/debug', sourceFiles: 'app/build/outputs/apk/debug/*.apk'
+                // sh "rm app/build/outputs/apk/debug/*.apk"
 
             }
         }
