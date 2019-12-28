@@ -12,7 +12,7 @@ pipeline {
                 // sh "./gradlew clean"
                 // sh "./gradlew assembleDebug"
                 script {
-                    def path = app/build/outputs/apk/debug/*.apk
+                    def path = 'app/build/outputs/apk/debug/*.apk'
                     def files = findFiles(glob: path)
                     echo """${files[0].name} ${files[0].path} ${files[0].directory} ${files[0].length} ${files[0].lastModified}"""
                     // sh "mv ${path} ${filename}-${gitbranch}.${extension}"
