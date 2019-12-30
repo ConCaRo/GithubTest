@@ -10,7 +10,7 @@ pipeline {
                     if(env.jiracomment != null) {
                         echo "jira comment ${jiracomment}"
                     }
-                    if(evn.nothing) {
+                    if(env.nothing) {
                         echo "nothing"
                     } else {
                         echo "something"
@@ -38,7 +38,7 @@ pipeline {
                 if(env.jiracomment != null) {
                     echo "jira comment ${jiracomment}"
                 }
-                if(evn.nothing) {
+                if(env.nothing) {
                     echo "nothing"
                 } else {
                     echo "something"
