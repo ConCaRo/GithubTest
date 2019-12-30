@@ -6,14 +6,17 @@ pipeline {
             steps {
                 sh "echo Building..."
                 sh 'printenv | sort'
-                if($jiracomment) {
-                    echo "$jiracomment"
+                script {
+                    if($jiracomment) {
+                        echo "$jiracomment"
+                    }
+                    if($nothing) {
+                        echo "nothing"
+                    } else {
+                        echo "something"
+                    }
                 }
-                if($nothing) {
-                    echo "nothing"
-                } else {
-                    echo "something"
-                }
+
             }
         }
         stage("Test") {
@@ -31,6 +34,11 @@ pipeline {
     post {
         always {
             sh "echo Finish "
+            script {
+                if($jiracomment) {
+                    echo "$jiracomment"
+                }
+            }
         }
     }
 }
