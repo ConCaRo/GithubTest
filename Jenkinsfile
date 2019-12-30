@@ -7,7 +7,7 @@ pipeline {
                 sh "echo Building..."
                 sh 'printenv | sort'
                 script {
-                    if(evn.jiracomment != null) {
+                    if(env.jiracomment != null) {
                         echo "jira comment env.jiracomment"
                     }
                     if(evn.nothing) {
@@ -35,7 +35,7 @@ pipeline {
         always {
             sh "echo Finish "
             script {
-                if(evn.jiracomment != null) {
+                if(env.jiracomment != null) {
                     echo "env.jiracomment"
                 }
                 if(evn.nothing) {
