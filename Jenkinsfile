@@ -24,7 +24,7 @@ pipeline {
                   echo fields.data.toString()*/
 
                   def transitions = jiraGetIssueTransitions idOrKey: "${jiraticket}"
-                  echo transitions.data.transitions[0].toString
+                  def abc = readJSON text: transitions
 
 
                   /*def issue = jiraGetIssue idOrKey: "${jiraticket}"
