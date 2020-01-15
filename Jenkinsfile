@@ -35,7 +35,7 @@ pipeline {
                   def transitionInput =
                       [
                           transition: [
-                              id: "${qa.to.id}"
+                              id: "${qa.id}"
                           ]
                       ]
 
