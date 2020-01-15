@@ -6,8 +6,8 @@ pipeline {
             steps {
                 sh "echo Building..."
                 sh 'printenv | sort'
-                sh "./gradlew clean"
-                sh "./gradlew assembleDebug"
+                // sh "./gradlew clean"
+                // sh "./gradlew assembleDebug"
 
                 script {
                     // Change apk file name
@@ -26,8 +26,8 @@ pipeline {
                         error('Apk File Invalid')
                     }
                 }
-                dropbox configName: 'Dropbox location', remoteDirectory: '', removePrefix: 'app/build/outputs/apk/debug', sourceFiles: 'app/build/outputs/apk/debug/*.apk'
-                sh "rm app/build/outputs/apk/debug/*.apk"
+                // dropbox configName: 'Dropbox location', remoteDirectory: '', removePrefix: 'app/build/outputs/apk/debug', sourceFiles: 'app/build/outputs/apk/debug/*.apk'
+                // sh "rm app/build/outputs/apk/debug/*.apk"
             }
         }
         stage("Test") {
@@ -39,6 +39,16 @@ pipeline {
                 always {
                     sh "echo Finish Test"
                 }
+            }
+        }
+        stage('Deploy') {
+            when {
+              expression {
+                currentBuild.result == null || currentBuild.result == 'SUCCESS'
+              }
+            }
+            steps {
+                sh "echo Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
             }
         }
     }

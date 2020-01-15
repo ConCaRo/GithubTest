@@ -6,28 +6,11 @@ pipeline {
             steps {
                 sh "echo Building..."
                 sh 'printenv | sort'
-                script {
-                    if(env.jiracomment) {
-                        echo "jira comment ${jiracomment}"
-                    }
-                    if(env.nothing) {
-                        echo "nothing"
-                    } else {
-                        echo "something"
-                    }
-                }
-
             }
         }
         stage("Test") {
             steps {
                 sh "echo Testing..."
-                // sh "./gradlew testDebugUnitTest"
-            }
-            post {
-                always {
-                    sh "echo Finish Test"
-                }
             }
         }
     }
@@ -37,11 +20,6 @@ pipeline {
             script {
                 if(env.jiracomment) {
                     echo "jira comment ${jiracomment}"
-                }
-                if(env.nothing) {
-                    echo "nothing"
-                } else {
-                    echo "something"
                 }
             }
         }
