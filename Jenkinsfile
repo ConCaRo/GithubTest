@@ -6,7 +6,7 @@ pipeline {
 
             steps {
                 sh "echo Building..."
-                sh 'printenv | sort'
+                // sh 'printenv | sort'
             }
         }
         stage("Test") {
@@ -24,7 +24,7 @@ pipeline {
                   echo fields.data.toString()*/
 
                   def transitions = jiraGetIssueTransitions idOrKey: "${jiraticket}"
-                  def abc = readJSON text: transitions
+                  def abc = readJSON text: transitions.data
 
 
                   /*def issue = jiraGetIssue idOrKey: "${jiraticket}"
