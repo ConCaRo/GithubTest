@@ -19,8 +19,10 @@ pipeline {
         always {
             sh "echo Finish "
             script {
-                def fields = jiraGetFields idOrKey: "${jiraticket}", site: 'meomeo'
-                echo fields.data.toString()
+                withEnv(['JIRA_SITE=meomeo']) {
+                  def fields = jiraGetFields idOrKey: 'TEST-1'
+                  echo fields.data.toString()
+                }
             }
         }
     }
