@@ -20,7 +20,7 @@ pipeline {
             sh "echo Finish "
             script {
                 withEnv(['JIRA_SITE=meomeo']) {
-                  def fields = jiraGetFields idOrKey: 'TEST-1'
+                  def fields = jiraGetFields idOrKey: "${jiraticket}"
                   echo fields.data.toString()
                 }
             }
