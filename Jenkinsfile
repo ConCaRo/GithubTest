@@ -27,7 +27,7 @@ pipeline {
                   def abc = transitions.data.transitions
                   echo "${abc.size()}"
 
-                  def transitionStatus = ["": "", "": ""]
+
 
                   def qa = abc.find { item ->
                     item.to.name == "QA"
