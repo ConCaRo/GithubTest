@@ -1,8 +1,13 @@
-def FILENAME = ""
+
 pipeline {
     agent any
     stages {
         stage("Build") {
+            when {
+              expression {
+                currentBuild.result == null || currentBuild.result == 'SUCCESS'
+              }
+            }
             steps {
                 sh "echo Building..."
                 sh 'printenv | sort'
@@ -18,9 +23,8 @@ pipeline {
         always {
             sh "echo Finish "
             script {
-                if(env.jiracomment) {
-                    echo "jira comment ${jiracomment}"
-                }
+                def fields = jiraGetFields idOrKey: "${jiraticket}"
+                echo fields.data.toString()
             }
         }
     }
