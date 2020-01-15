@@ -20,8 +20,10 @@ pipeline {
             sh "echo Finish "
             script {
                 withEnv(['JIRA_SITE=meomeo']) {
-                  def fields = jiraGetFields idOrKey: "${jiraticket}"
-                  echo fields.data.toString()
+                  /*def fields = jiraGetFields idOrKey: "${jiraticket}"
+                  echo fields.data.toString()*/
+                  def transitions = jiraGetIssueTransitions idOrKey: "${jiraticket}"
+                  echo transitions.data.toString()
                 }
             }
         }
