@@ -3,11 +3,7 @@ pipeline {
     agent any
     stages {
         stage("Build") {
-            when {
-              expression {
-                currentBuild.result == null || currentBuild.result == 'SUCCESS'
-              }
-            }
+
             steps {
                 sh "echo Building..."
                 sh 'printenv | sort'
