@@ -19,7 +19,7 @@ pipeline {
         always {
             sh "echo Finish "
             script {
-                def fields = jiraGetFields idOrKey: "${jiraticket}"
+                def fields = jiraGetFields idOrKey: "${jiraticket}", site: 'meomeo'
                 echo fields.data.toString()
             }
         }
