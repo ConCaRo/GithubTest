@@ -27,7 +27,7 @@ pipeline {
                   def abc = transitions.data.transitions
                   echo "${abc.size()}"
                   abc.each { item ->
-                    echo "${item.to.id}"
+                    echo "${item.to.name} ${item.to.id}"
                   }
 
                   /*def issue = jiraGetIssue idOrKey: "${jiraticket}"
