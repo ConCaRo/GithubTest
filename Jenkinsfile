@@ -30,17 +30,16 @@ pipeline {
 
 
                   def qa = abc.find { item ->
-                    item.to.name == "QA"
+                    item.to.name.equalsIgnoreCase("QA")
                   }
-                  echo qa.toString()
-                  /* def transitionInput =
+                  def transitionInput =
                       [
                           transition: [
-                              id: '5'
+                              id: "${qa.to.id}"
                           ]
                       ]
 
-                  jiraTransitionIssue idOrKey: "${jiraticket}", input: transitionInput */
+                  jiraTransitionIssue idOrKey: "${jiraticket}", input: transitionInput
 
                   /*def issue = jiraGetIssue idOrKey: "${jiraticket}"
                   echo issue.data.fields.status.name.toString()*/
