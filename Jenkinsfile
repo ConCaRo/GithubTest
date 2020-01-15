@@ -36,5 +36,8 @@ pipeline {
                 sh 'printenv | sort'
             }
         }
+        failure {
+            sh 'printenv | sort'
+        }
     }
 }
