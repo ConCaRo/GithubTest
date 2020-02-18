@@ -70,6 +70,11 @@ abstract class BaseFragment : Fragment(), Injectable {
         }
     }
 
+    fun hideToolbar() {
+        val toolBar = requireActivity()?.findViewById<Toolbar>(R.id.toolbar)
+        toolBar.visibility = View.GONE
+    }
+
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         return when (item?.itemId) {
             android.R.id.home -> {

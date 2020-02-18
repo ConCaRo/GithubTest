@@ -4,6 +4,7 @@ import android.content.Context
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -34,6 +35,7 @@ class ApplicationModule {
     @Provides
     @Singleton
     fun provideRetrofit(gson: Gson, okHttpClient: OkHttpClient): Retrofit {
+
         return Retrofit.Builder()
             .baseUrl("https://api.github.com/")
             .client(okHttpClient)
@@ -44,7 +46,14 @@ class ApplicationModule {
     @Provides
     @Singleton
     fun provideOkHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
+        val headerAuthorizationInterceptor = Interceptor { chain ->
+            var request = chain.request()
+            val headers = request.headers().newBuilder().add("Authorization", "3a7e91e8130c505ab51c:35fa27a63489f3d4eef9e5cc3acf8e0f7d3c6bd6").build()
+            request = request.newBuilder().headers(headers).build()
+            chain.proceed(request)
+        }
         val okHttpClientBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
+        okHttpClientBuilder.addInterceptor(headerAuthorizationInterceptor)
         if (BuildConfig.DEBUG) {
             okHttpClientBuilder.addInterceptor(loggingInterceptor)
         }

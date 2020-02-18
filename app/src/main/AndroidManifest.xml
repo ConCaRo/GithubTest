@@ -17,25 +17,25 @@
             android:theme="@style/AppTheme">
         <activity
                 android:name=".features.webview.WebviewActivity">
-            <intent-filter>
+            <!--<intent-filter>
             <action android:name="android.intent.action.MAIN"/>
             <action android:name="android.intent.action.VIEW"/>
 
             <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+            </intent-filter>-->
 
         </activity>
         <activity android:name=".features.gits.GitsActivity">
 
         </activity>
         <activity android:name=".features.gitdetail.GitDetailActivity"/>
-        <activity android:name=".features.nestedrecyclerview.NestedRecyclerviewActivity">
-            <!--<intent-filter>
+        <activity android:name=".features.fragmentnestedrecyclerview.FragmentNestedRecyclerviewActivity">
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <action android:name="android.intent.action.VIEW"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>-->
+            </intent-filter>
         </activity>
 
         <meta-data

@@ -20,7 +20,7 @@
             android:layout_height="150dp"
             android:src="@mipmap/ic_launcher_round"
             android:scaleType="center"
-            android:background="@color/colorAccent"/>
+            android:background="@color/colorAccent" android:visibility="gone"/>
 
 
     <ImageView
@@ -29,14 +29,14 @@
             android:src="@mipmap/ic_launcher_round"
             android:scaleType="center"
             android:background="@color/design_default_color_primary"
-            app:layout_scrollFlags="scroll"/>
+            app:layout_scrollFlags="scroll" android:visibility="gone"/>
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/progress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="-14dp"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <ProgressBar
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"

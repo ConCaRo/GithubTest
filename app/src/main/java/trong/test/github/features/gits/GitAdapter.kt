@@ -1,6 +1,7 @@
 package trong.test.github.features.gits
 
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +12,7 @@ import trong.test.github.databinding.ItemGitBinding
 /**
  * Created by Concaro on 05/11/2017.
  */
-class GitAdapter(var items: List<Git> = arrayListOf(), var clickListener: (Git) -> Unit) :
+class GitAdapter(var items: List<Git> = arrayListOf(),val fragmentPosition: Int = 0, var clickListener: (Git) -> Unit) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -30,6 +31,7 @@ class GitAdapter(var items: List<Git> = arrayListOf(), var clickListener: (Git) 
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        Log.d("Olala", "onBindViewHolder ${fragmentPosition} item $position")
         val holder = holder as ItemViewHolder
         val item = items.get(position)
         /*holder?.itemBinding.data = item
@@ -50,7 +52,7 @@ class GitAdapter(var items: List<Git> = arrayListOf(), var clickListener: (Git) 
     class ItemViewHolder(val itemBinding: ItemGitBinding) : RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(item: Git) {
             itemBinding.data = item
-            // itemBinding.executePendingBindings()
+            itemBinding.executePendingBindings()
         }
     }
 }
