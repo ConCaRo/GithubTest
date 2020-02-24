@@ -24,13 +24,13 @@ class GitsViewModel1
         this.gits.value = newList
 
         // Check load more and increase current page
-        canLoadMore = gits.size == PER_PAGE && this.gits.value?.size?.compareTo(4) == -1
+        canLoadMore = gits.size == PER_PAGE && this.gits.value?.size?.compareTo(100) == -1
         isLoading = false
         currentPage++
     }
 
     fun loadMore() {
         isLoading = true
-        getGits(1)
+        getGits(10)
     }
 }

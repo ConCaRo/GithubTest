@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:background="@android:color/white"
     android:gravity="center"
+    android:minHeight="150dp"
     android:orientation="vertical"
     android:paddingHorizontal="12dp"
     android:paddingVertical="12dp">
@@ -30,7 +31,7 @@
           android:textColor="@color/colorAccent"
           android:textStyle="bold" />
 
-      <android.support.v7.widget.RecyclerView
+      <trong.test.github.features.fragmentnestedrecyclerview.Recyclerview1
           android:id="@+id/recyclerView"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"

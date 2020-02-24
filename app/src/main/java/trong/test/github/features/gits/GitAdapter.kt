@@ -24,9 +24,10 @@ class GitAdapter(var items: List<Git> = arrayListOf(),val fragmentPosition: Int 
     }
 
     fun updateItems(items: List<Git>?) {
+        val position = this.items.size
         items?.let {
             this.items = items
-            notifyDataSetChanged()
+            notifyItemChanged(position)
         }
     }
 

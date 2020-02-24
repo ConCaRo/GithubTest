@@ -22,7 +22,8 @@ class Network @Inject constructor(
 
     override fun gits(page: Int, per_page: Int, since: Int): Either<Failure, List<Git>> {
         return when (networkHandler.isConnected) {
-            true -> request(gitService.gits(page, per_page, since), { it.map { it } }, Collections.emptyList())
+            // true -> request(gitService.gits(page, per_page, since), { it.map { it } }, Collections.emptyList())
+            true -> Either.Right(getDummuGit(per_page))
             false, null -> Either.Left(Failure.NetworkError)
         }
     }
@@ -60,6 +61,14 @@ class Network @Inject constructor(
 
     fun getDummyNestedChild(): List<Children> {
         return arrayListOf(Children(), Children(), Children(), Children())
+    }
+
+    fun getDummuGit(number: Int) : List<Git> {
+        val list = arrayListOf<Git>()
+        for(i in 0..number) {
+            list.add(Git.empty())
+        }
+        return list
     }
 
 }
