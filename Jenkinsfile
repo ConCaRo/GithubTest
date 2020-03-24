@@ -5,13 +5,12 @@ pipeline {
         stage("Build") {
             steps {
                 sh "echo Building..."
-                // sh 'printenv | sort'
+                sh 'printenv | sort'
             }
         }
         stage("Test") {
             steps {
                 sh "echo Testing..."
-
             }
         }
     }

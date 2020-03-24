@@ -38,7 +38,7 @@ class FragmentNestedRecyclerViewFragment : BaseFragment() {
 //        GitsFragment2.newInstance(3), GitsFragment1.newInstance(4),
 //        GitsFragment1.newInstance(5), GitsFragment1.newInstance(6),
 //        GitsFragment1.newInstance(7), GitsFragment1.newInstance(8),
-//    GitsFragment1.newInstance(9),
+    GitsFragment1.newInstance(9),
         GitsFragment1.newInstance(10))
 
     override fun iniView() {
@@ -59,7 +59,7 @@ class FragmentNestedRecyclerViewFragment : BaseFragment() {
                         1)) {
                     //Log.d("OLALA", "onScrolled Parent cannot Scroll down Vertically $dx $dy")
                     if (recyclerView.adapter?.itemCount!! >= 1) {
-                        // adapter.processLoading(true)
+//                         adapter.processLoading(true)
                         when (listFragments.get(listFragments.size - 1)) {
                             is GitsFragment1 -> (listFragments.get(listFragments.size - 1) as GitsFragment1).loadMore()
 //                            is GitsFragment2 -> (listFragments.get(listFragments.size - 1) as GitsFragment2).loadMore()
