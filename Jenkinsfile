@@ -18,6 +18,13 @@ pipeline {
         always {
             script {
                 sh "echo Finish "
+                parameters: [
+                    [
+                      $class: 'StringParameterValue',
+                      name: 'myStringParameter',
+                      value: "${gitbranch}",
+                    ]
+                  ],
             }
         }
     }
