@@ -17,7 +17,6 @@ pipeline {
     post {
         always {
             script {
-                sh "echo Finish "
                 build(
                   job: 'GitTest_dev_pr_Pipeline_trigger',
                   parameters: [
@@ -28,6 +27,7 @@ pipeline {
                     ]
                   ]
                 )
+                sh "echo Finish "
             }
         }
     }
