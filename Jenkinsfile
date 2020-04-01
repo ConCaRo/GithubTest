@@ -18,6 +18,16 @@ pipeline {
         always {
             script {
                 sh "echo Finish "
+                build(
+                  job: 'GitTest_dev_pr_Pipeline_trigger',
+                  parameters: [
+                    [
+                      $class: 'StringParameterValue',
+                      name: 'passData',
+                      value: "my value",
+                    ]
+                  ]
+                )
             }
         }
     }
