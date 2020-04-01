@@ -22,8 +22,8 @@ pipeline {
                   parameters: [
                     [
                       $class: 'StringParameterValue',
-                      name: 'passData',
-                      value: "my value",
+                      name: 'gitbranch',
+                      value: "${gitbranch}",
                     ]
                   ]
                 )
