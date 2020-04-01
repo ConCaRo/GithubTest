@@ -16,8 +16,8 @@ pipeline {
     }
     post {
         always {
-            sh "echo Finish "
             script {
+                sh "echo Finish "
             }
         }
     }
