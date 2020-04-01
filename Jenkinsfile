@@ -27,7 +27,7 @@ pipeline {
                     ]
                   ]
                 )
-                sh "echo Finish "
+                sh "echo Finish test "
             }
         }
     }
